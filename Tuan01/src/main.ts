@@ -5,6 +5,7 @@ import { Rectangle } from "./bai4";
 import { BankAccount } from "./bai5";
 import { Product } from "./bai8";
 import { Dog, Cat } from "./bai11";
+import { Bird, Fish } from "./bai12";
 
 //Cau1:
 // var p = new Person("Hoang", 21);
@@ -41,11 +42,16 @@ import { Dog, Cat } from "./bai11";
 // })
 
 //Cau11:
-const dog = new Dog("Shiba");
-const cat = new Cat("golden");
+// const dog = new Dog("Shiba");
+// const cat = new Cat("golden");
 
-dog.bark();
-cat.meow();
+// dog.bark();
+// cat.meow();
 
+//Cau12:
+const bird = new Bird("Dai bang");
+const fish = new Fish("Ca vang");
 
+bird.fly(); 
+fish.swim(); 
 
