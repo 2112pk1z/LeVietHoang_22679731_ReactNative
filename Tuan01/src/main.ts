@@ -3,6 +3,7 @@ import { Student } from "./bai2";
 import { Car } from "./bai3";
 import { Rectangle } from "./bai4";
 import { BankAccount } from "./bai5";
+import { Product } from "./bai8";
 
 //Cau1:
 // var p = new Person("Hoang", 21);
@@ -26,4 +27,16 @@ import { BankAccount } from "./bai5";
 // console.log("So du hien tai: " + b.balance);
 // b.deposit(20000);
 // b.withdraw(30000);
+
+//Cau8:
+var products: Product[] = [
+    new Product("A", 50),
+    new Product("B", 300),
+    new Product("C", 200),
+];
+var products1 = products.filter(p => p.price > 100);
+console.log("San pham co gia lon hon 100: ");
+products1.forEach(p => {console.log(p);
+})
+
 
