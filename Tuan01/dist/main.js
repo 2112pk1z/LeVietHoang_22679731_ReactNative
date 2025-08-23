@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const bai4_1 = require("./bai4");
+const bai5_1 = require("./bai5");
 //Cau1:
 // var p = new Person("Hoang", 21);
 // p.display();
@@ -11,6 +11,11 @@ const bai4_1 = require("./bai4");
 // var c = new Car("Mecerdes", "Maybach S450", 2010);
 // c.display()
 //Cau4:
-var r = new bai4_1.Rectangle(10, 15);
-console.log("Chu vi:", r.chuVi());
-console.log("Dien tich:", r.dienTich());
+// var r = new Rectangle(10, 15)
+// console.log("Chu vi:", r.chuVi());
+// console.log("Dien tich:", r.dienTich());
+//Cau 5:
+var b = new bai5_1.BankAccount(100000);
+console.log("So du hien tai: " + b.balance);
+b.deposit(20000);
+b.withdraw(30000);
