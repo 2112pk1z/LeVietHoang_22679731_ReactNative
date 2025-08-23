@@ -4,6 +4,7 @@ import { Car } from "./bai3";
 import { Rectangle } from "./bai4";
 import { BankAccount } from "./bai5";
 import { Product } from "./bai8";
+import { Dog, Cat } from "./bai11";
 
 //Cau1:
 // var p = new Person("Hoang", 21);
@@ -29,14 +30,22 @@ import { Product } from "./bai8";
 // b.withdraw(30000);
 
 //Cau8:
-var products: Product[] = [
-    new Product("A", 50),
-    new Product("B", 300),
-    new Product("C", 200),
-];
-var products1 = products.filter(p => p.price > 100);
-console.log("San pham co gia lon hon 100: ");
-products1.forEach(p => {console.log(p);
-})
+// var products: Product[] = [
+//     new Product("A", 50),
+//     new Product("B", 300),
+//     new Product("C", 200),
+// ];
+// var products1 = products.filter(p => p.price > 100);
+// console.log("San pham co gia lon hon 100: ");
+// products1.forEach(p => {console.log(p);
+// })
+
+//Cau11:
+const dog = new Dog("Shiba");
+const cat = new Cat("golden");
+
+dog.bark();
+cat.meow();
+
 
 

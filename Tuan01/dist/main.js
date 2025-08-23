@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const bai8_1 = require("./bai8");
+const bai11_1 = require("./bai11");
 //Cau1:
 // var p = new Person("Hoang", 21);
 // p.display();
@@ -20,13 +20,17 @@ const bai8_1 = require("./bai8");
 // b.deposit(20000);
 // b.withdraw(30000);
 //Cau8:
-var products = [
-    new bai8_1.Product("A", 50),
-    new bai8_1.Product("B", 300),
-    new bai8_1.Product("C", 200),
-];
-var products1 = products.filter(p => p.price > 100);
-console.log("San pham co gia lon hon 100: ");
-products1.forEach(p => {
-    console.log(p);
-});
+// var products: Product[] = [
+//     new Product("A", 50),
+//     new Product("B", 300),
+//     new Product("C", 200),
+// ];
+// var products1 = products.filter(p => p.price > 100);
+// console.log("San pham co gia lon hon 100: ");
+// products1.forEach(p => {console.log(p);
+// })
+//Cau11:
+const dog = new bai11_1.Dog("Shiba");
+const cat = new bai11_1.Cat("golden");
+dog.bark();
+cat.meow();
