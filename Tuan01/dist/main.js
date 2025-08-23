@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const bai13_1 = require("./bai13");
+const bai15_1 = require("./bai15");
 //Cau1:
 // var p = new Person("Hoang", 21);
 // p.display();
@@ -40,7 +40,15 @@ const bai13_1 = require("./bai13");
 // bird.fly(); 
 // fish.swim(); 
 //Cau13:
-const square = new bai13_1.Square(5);
-const circle = new bai13_1.Circle(3);
-console.log("Dien tich hinh vuong:", square.area());
-console.log("Dien tich hinh tron:", circle.area());
+// const square = new Square(5);
+// const circle = new Circle(3);
+// console.log("Dien tich hinh vuong:", square.area());
+// console.log("Dien tich hinh tron:", circle.area());  
+//Cau15:
+const library = new bai15_1.Library();
+const book1 = new bai15_1.Book("Book 1", "Hoang");
+const book2 = new bai15_1.Book("Book 2", "Hoang");
+library.addBook(book1);
+library.addBook(book2);
+console.log("Danh sach sach co trong thu vien:");
+library.books.forEach(b => console.log(b));
