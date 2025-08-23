@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const bai12_1 = require("./bai12");
+const bai13_1 = require("./bai13");
 //Cau1:
 // var p = new Person("Hoang", 21);
 // p.display();
@@ -35,7 +35,12 @@ const bai12_1 = require("./bai12");
 // dog.bark();
 // cat.meow();
 //Cau12:
-const bird = new bai12_1.Bird("Dai bang");
-const fish = new bai12_1.Fish("Ca vang");
-bird.fly();
-fish.swim();
+// const bird = new Bird("Dai bang");
+// const fish = new Fish("Ca vang");
+// bird.fly(); 
+// fish.swim(); 
+//Cau13:
+const square = new bai13_1.Square(5);
+const circle = new bai13_1.Circle(3);
+console.log("Dien tich hinh vuong:", square.area());
+console.log("Dien tich hinh tron:", circle.area());

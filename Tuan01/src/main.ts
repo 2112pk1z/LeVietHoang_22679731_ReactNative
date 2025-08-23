@@ -6,6 +6,7 @@ import { BankAccount } from "./bai5";
 import { Product } from "./bai8";
 import { Dog, Cat } from "./bai11";
 import { Bird, Fish } from "./bai12";
+import { Square, Circle } from "./bai13";
 
 //Cau1:
 // var p = new Person("Hoang", 21);
@@ -49,9 +50,17 @@ import { Bird, Fish } from "./bai12";
 // cat.meow();
 
 //Cau12:
-const bird = new Bird("Dai bang");
-const fish = new Fish("Ca vang");
+// const bird = new Bird("Dai bang");
+// const fish = new Fish("Ca vang");
 
-bird.fly(); 
-fish.swim(); 
+// bird.fly(); 
+// fish.swim(); 
+
+//Cau13:
+const square = new Square(5);
+const circle = new Circle(3);
+
+console.log("Dien tich hinh vuong:", square.area());
+console.log("Dien tich hinh tron:", circle.area());  
+
 
