@@ -1,4 +1,4 @@
-class Person {
+export class Person {
     name: string;
     age: number;
     constructor(name: string, age: number) {
@@ -7,10 +7,8 @@ class Person {
     }
 
     display() {
-        console.log("ten: " + this.name);
-        console.log("tuoi: " + this.age);
+        console.log("name: " + this.name);
+        console.log("age: " + this.age);
     }
 }
 
-var p = new Person("Hoang", 21);
-p.display();
