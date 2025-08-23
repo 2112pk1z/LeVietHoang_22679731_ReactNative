@@ -22,8 +22,8 @@ import { BankAccount } from "./bai5";
 // console.log("Dien tich:", r.dienTich());
 
 //Cau 5:
-var b = new BankAccount(100000)
-console.log("So du hien tai: " + b.balance);
-b.deposit(20000);
-b.withdraw(30000);
+// var b = new BankAccount(100000)
+// console.log("So du hien tai: " + b.balance);
+// b.deposit(20000);
+// b.withdraw(30000);
 
