@@ -10,6 +10,7 @@ import { Square, Circle } from "./bai13";
 import { Book, User, Library } from "./bai15";
 import { Box } from "./bai16";
 import { Logger } from "./bai17";
+import { MathUtil } from "./bai18";
 
 //Cau1:
 // var p = new Person("Hoang", 21);
@@ -82,11 +83,18 @@ import { Logger } from "./bai17";
 // console.log(stringBox);
 
 //Cau17:
-const loggerA = Logger.getInstance();
-const loggerB = Logger.getInstance();
-loggerA.log("Started");
-loggerB.log("Clicked");
-console.log(loggerA === loggerB);
+// const loggerA = Logger.getInstance();
+// const loggerB = Logger.getInstance();
+// loggerA.log("Started");
+// loggerB.log("Clicked");
+// console.log(loggerA === loggerB);
+
+//Cau18:
+console.log(MathUtil.add(10, 5));       
+console.log(MathUtil.subtract(10, 5));  
+console.log(MathUtil.multiply(10, 5));  
+console.log(MathUtil.divide(10, 5));   
+console.log(MathUtil.divide(10, 0));  
 
 
 

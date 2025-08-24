@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const bai17_1 = require("./bai17");
+const bai18_1 = require("./bai18");
 //Cau1:
 // var p = new Person("Hoang", 21);
 // p.display();
@@ -58,8 +58,14 @@ const bai17_1 = require("./bai17");
 // console.log(numberBox);
 // console.log(stringBox);
 //Cau17:
-const loggerA = bai17_1.Logger.getInstance();
-const loggerB = bai17_1.Logger.getInstance();
-loggerA.log("Started");
-loggerB.log("Clicked");
-console.log(loggerA === loggerB);
+// const loggerA = Logger.getInstance();
+// const loggerB = Logger.getInstance();
+// loggerA.log("Started");
+// loggerB.log("Clicked");
+// console.log(loggerA === loggerB);
+//Cau18:
+console.log(bai18_1.MathUtil.add(10, 5));
+console.log(bai18_1.MathUtil.subtract(10, 5));
+console.log(bai18_1.MathUtil.multiply(10, 5));
+console.log(bai18_1.MathUtil.divide(10, 5));
+console.log(bai18_1.MathUtil.divide(10, 0));
