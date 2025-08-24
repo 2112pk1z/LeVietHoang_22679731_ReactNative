@@ -12,6 +12,7 @@ import { Box } from "./bai16";
 import { Logger } from "./bai17";
 import { MathUtil } from "./bai18";
 import { Animal, Lion, Monkey } from "./bai19";
+import { Carr, Bike } from "./bai20";
 
 //Cau1:
 // var p = new Person("Hoang", 21);
@@ -98,9 +99,17 @@ import { Animal, Lion, Monkey } from "./bai19";
 // console.log(MathUtil.divide(10, 0));  
 
 //Cau19:
-let animals: Animal[] = [new Lion(), new Monkey(), new Animal()];
-for (let a of animals) {
-    a.makeSound();
-}
+// let animals: Animal[] = [new Lion(), new Monkey(), new Animal()];
+// for (let a of animals) {
+//     a.makeSound();
+// }
+
+//Cau20:
+let c = new Carr();
+let b = new Bike();
+c.start();
+c.stop();
+b.start();
+b.stop();
 
 
