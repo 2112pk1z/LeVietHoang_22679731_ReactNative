@@ -9,6 +9,7 @@ import { Bird, Fish } from "./bai12";
 import { Square, Circle } from "./bai13";
 import { Book, User, Library } from "./bai15";
 import { Box } from "./bai16";
+import { Logger } from "./bai17";
 
 //Cau1:
 // var p = new Person("Hoang", 21);
@@ -75,10 +76,17 @@ import { Box } from "./bai16";
 // library.books.forEach(b => console.log(b));
 
 //Cau16:
-const numberBox = new Box(100);
-const stringBox = new Box("Hoang");
-console.log(numberBox);
-console.log(stringBox);
+// const numberBox = new Box(100);
+// const stringBox = new Box("Hoang");
+// console.log(numberBox);
+// console.log(stringBox);
+
+//Cau17:
+const loggerA = Logger.getInstance();
+const loggerB = Logger.getInstance();
+loggerA.log("Started");
+loggerB.log("Clicked");
+console.log(loggerA === loggerB);
 
 
 

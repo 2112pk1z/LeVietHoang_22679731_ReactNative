@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const bai16_1 = require("./bai16");
+const bai17_1 = require("./bai17");
 //Cau1:
 // var p = new Person("Hoang", 21);
 // p.display();
@@ -53,7 +53,13 @@ const bai16_1 = require("./bai16");
 // console.log("Danh sach sach co trong thu vien:");
 // library.books.forEach(b => console.log(b));
 //Cau16:
-const numberBox = new bai16_1.Box(100);
-const stringBox = new bai16_1.Box("Hoang");
-console.log(numberBox);
-console.log(stringBox);
+// const numberBox = new Box(100);
+// const stringBox = new Box("Hoang");
+// console.log(numberBox);
+// console.log(stringBox);
+//Cau17:
+const loggerA = bai17_1.Logger.getInstance();
+const loggerB = bai17_1.Logger.getInstance();
+loggerA.log("Started");
+loggerB.log("Clicked");
+console.log(loggerA === loggerB);
