@@ -8,6 +8,7 @@ import { Dog, Cat } from "./bai11";
 import { Bird, Fish } from "./bai12";
 import { Square, Circle } from "./bai13";
 import { Book, User, Library } from "./bai15";
+import { Box } from "./bai16";
 
 //Cau1:
 // var p = new Person("Hoang", 21);
@@ -65,13 +66,20 @@ import { Book, User, Library } from "./bai15";
 // console.log("Dien tich hinh tron:", circle.area());  
 
 //Cau15:
-const library = new Library();
-const book1 = new Book("Book 1", "Hoang");
-const book2 = new Book("Book 2", "Hoang");
-library.addBook(book1);
-library.addBook(book2);
-console.log("Danh sach sach co trong thu vien:");
-library.books.forEach(b => console.log(b));
+// const library = new Library();
+// const book1 = new Book("Book 1", "Hoang");
+// const book2 = new Book("Book 2", "Hoang");
+// library.addBook(book1);
+// library.addBook(book2);
+// console.log("Danh sach sach co trong thu vien:");
+// library.books.forEach(b => console.log(b));
+
+//Cau16:
+const numberBox = new Box(100);
+const stringBox = new Box("Hoang");
+console.log(numberBox);
+console.log(stringBox);
+
 
 
 
