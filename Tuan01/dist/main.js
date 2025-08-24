@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const bai18_1 = require("./bai18");
+const bai19_1 = require("./bai19");
 //Cau1:
 // var p = new Person("Hoang", 21);
 // p.display();
@@ -64,8 +64,13 @@ const bai18_1 = require("./bai18");
 // loggerB.log("Clicked");
 // console.log(loggerA === loggerB);
 //Cau18:
-console.log(bai18_1.MathUtil.add(10, 5));
-console.log(bai18_1.MathUtil.subtract(10, 5));
-console.log(bai18_1.MathUtil.multiply(10, 5));
-console.log(bai18_1.MathUtil.divide(10, 5));
-console.log(bai18_1.MathUtil.divide(10, 0));
+// console.log(MathUtil.add(10, 5));       
+// console.log(MathUtil.subtract(10, 5));  
+// console.log(MathUtil.multiply(10, 5));  
+// console.log(MathUtil.divide(10, 5));   
+// console.log(MathUtil.divide(10, 0));  
+//Cau19:
+let animals = [new bai19_1.Lion(), new bai19_1.Monkey(), new bai19_1.Animal()];
+for (let a of animals) {
+    a.makeSound();
+}

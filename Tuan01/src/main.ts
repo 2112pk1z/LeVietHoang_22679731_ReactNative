@@ -11,6 +11,7 @@ import { Book, User, Library } from "./bai15";
 import { Box } from "./bai16";
 import { Logger } from "./bai17";
 import { MathUtil } from "./bai18";
+import { Animal, Lion, Monkey } from "./bai19";
 
 //Cau1:
 // var p = new Person("Hoang", 21);
@@ -90,12 +91,16 @@ import { MathUtil } from "./bai18";
 // console.log(loggerA === loggerB);
 
 //Cau18:
-console.log(MathUtil.add(10, 5));       
-console.log(MathUtil.subtract(10, 5));  
-console.log(MathUtil.multiply(10, 5));  
-console.log(MathUtil.divide(10, 5));   
-console.log(MathUtil.divide(10, 0));  
+// console.log(MathUtil.add(10, 5));       
+// console.log(MathUtil.subtract(10, 5));  
+// console.log(MathUtil.multiply(10, 5));  
+// console.log(MathUtil.divide(10, 5));   
+// console.log(MathUtil.divide(10, 0));  
 
-
+//Cau19:
+let animals: Animal[] = [new Lion(), new Monkey(), new Animal()];
+for (let a of animals) {
+    a.makeSound();
+}
 
 
