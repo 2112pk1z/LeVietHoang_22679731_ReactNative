@@ -2,7 +2,7 @@
 function delayedHello() {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve("Hello");
+            resolve("Hello Async");
         }, 2000);
     });
 }
