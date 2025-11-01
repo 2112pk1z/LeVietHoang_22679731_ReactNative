@@ -6,10 +6,11 @@ import {
   SafeAreaView,
   FlatList,
   Button,
+  Pressable,
 } from "react-native";
 import ExpenseItem from "../components/ExpenseItem";
 import { useDatabase } from "../hooks/useDatabase";
-import { useRouter, useFocusEffect } from "expo-router"; // ✅ thêm useFocusEffect
+import { useRouter, useFocusEffect } from "expo-router";
 
 export default function HomeScreen() {
   const { getExpenses } = useDatabase();
@@ -21,7 +22,7 @@ export default function HomeScreen() {
     setData(items);
   };
 
-  // ✅ Tự động gọi lại loadData mỗi khi màn hình được focus
+  // ✅ Tự reload khi màn hình được focus
   useFocusEffect(
     useCallback(() => {
       loadData();
@@ -38,12 +39,21 @@ export default function HomeScreen() {
         data={data}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <ExpenseItem
-            title={item.title}
-            amount={item.amount}
-            createdAt={item.createdAt}
-            type={item.type}
-          />
+          <Pressable
+            onPress={() =>
+              router.push({
+                pathname: "/edit",
+                params: { id: item.id.toString() },
+              })
+            }
+          >
+            <ExpenseItem
+              title={item.title}
+              amount={item.amount}
+              createdAt={item.createdAt}
+              type={item.type}
+            />
+          </Pressable>
         )}
         ListEmptyComponent={<Text style={styles.empty}>Chưa có dữ liệu</Text>}
       />

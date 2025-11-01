@@ -4,7 +4,7 @@ import { useEffect } from "react";
 const db = SQLite.openDatabaseSync("expenses.db");
 
 export function useDatabase() {
-  // Tạo table nếu chưa có
+  // 🔧 Tạo bảng nếu chưa có
   useEffect(() => {
     (async () => {
       await db.execAsync(`
@@ -31,5 +31,21 @@ export function useDatabase() {
     return await db.getAllAsync("SELECT * FROM expenses ORDER BY id DESC");
   };
 
-  return { addExpense, getExpenses };
+  const getExpenseById = async (id: number) => {
+    return await db.getFirstAsync("SELECT * FROM expenses WHERE id = ?", [id]);
+  };
+
+  const updateExpense = async (
+    id: number,
+    title: string,
+    amount: number,
+    type: string
+  ) => {
+    await db.runAsync(
+      "UPDATE expenses SET title = ?, amount = ?, type = ? WHERE id = ?",
+      [title, amount, type, id]
+    );
+  };
+
+  return { addExpense, getExpenses, getExpenseById, updateExpense };
 }
