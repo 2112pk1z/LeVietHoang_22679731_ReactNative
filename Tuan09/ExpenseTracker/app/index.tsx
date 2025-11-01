@@ -1,62 +1,64 @@
-import React from "react";
-import { View, Text, StyleSheet, SafeAreaView, FlatList } from "react-native";
+import React, { useCallback, useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  FlatList,
+  Button,
+} from "react-native";
 import ExpenseItem from "../components/ExpenseItem";
-
-const mockData = [
-  {
-    id: "1",
-    title: "Lương tháng 10",
-    amount: 12000000,
-    createdAt: "2025-11-01",
-    type: "Thu",
-  },
-  {
-    id: "2",
-    title: "Mua đồ ăn",
-    amount: 150000,
-    createdAt: "2025-11-01",
-    type: "Chi",
-  },
-  {
-    id: "3",
-    title: "Mua sách",
-    amount: 200000,
-    createdAt: "2025-10-30",
-    type: "Chi",
-  },
-];
+import { useDatabase } from "../hooks/useDatabase";
+import { useRouter, useFocusEffect } from "expo-router"; // ✅ thêm useFocusEffect
 
 export default function HomeScreen() {
+  const { getExpenses } = useDatabase();
+  const [data, setData] = useState<any[]>([]);
+  const router = useRouter();
+
+  const loadData = async () => {
+    const items = await getExpenses();
+    setData(items);
+  };
+
+  // ✅ Tự động gọi lại loadData mỗi khi màn hình được focus
+  useFocusEffect(
+    useCallback(() => {
+      loadData();
+    }, [])
+  );
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>EXPENSE TRACKER</Text>
+
+      <Button title="Add" onPress={() => router.push("/modal")} />
+
       <FlatList
-        data={mockData}
-        keyExtractor={(item) => item.id}
+        data={data}
+        keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <ExpenseItem
             title={item.title}
             amount={item.amount}
             createdAt={item.createdAt}
-            type={item.type as "Thu" | "Chi"}
+            type={item.type}
           />
         )}
+        ListEmptyComponent={<Text style={styles.empty}>Chưa có dữ liệu</Text>}
       />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    padding: 16,
-    paddingTop: 40,
-  },
+  container: { flex: 1, backgroundColor: "#fff", padding: 16 },
   title: {
     fontSize: 24,
     fontWeight: "bold",
     textAlign: "center",
     marginVertical: 10,
+    paddingTop: 40,
   },
+  empty: { textAlign: "center", color: "#888", marginTop: 20 },
 });
