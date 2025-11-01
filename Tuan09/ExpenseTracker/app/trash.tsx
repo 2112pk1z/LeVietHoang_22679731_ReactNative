@@ -5,16 +5,20 @@ import {
   StyleSheet,
   SafeAreaView,
   FlatList,
+  Pressable,
+  Alert,
   TextInput,
+  RefreshControl,
 } from "react-native";
 import ExpenseItem from "../components/ExpenseItem";
 import { useDatabase } from "../hooks/useDatabase";
 import { useFocusEffect } from "expo-router";
 
 export default function TrashScreen() {
-  const { getDeletedExpenses } = useDatabase();
+  const { getDeletedExpenses, restoreExpense } = useDatabase();
   const [data, setData] = useState<any[]>([]);
   const [search, setSearch] = useState("");
+  const [refreshing, setRefreshing] = useState(false);
 
   const loadData = async () => {
     const items = await getDeletedExpenses();
@@ -31,6 +35,27 @@ export default function TrashScreen() {
     item.title.toLowerCase().includes(search.toLowerCase())
   );
 
+  // ✅ Khôi phục item
+  const handleRestore = (id: number) => {
+    Alert.alert("Khôi phục", "Bạn có muốn khôi phục khoản này?", [
+      { text: "Hủy", style: "cancel" },
+      {
+        text: "Khôi phục",
+        onPress: async () => {
+          await restoreExpense(id);
+          loadData(); // cập nhật lại danh sách
+        },
+      },
+    ]);
+  };
+
+  // ✅ Refresh control
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await loadData();
+    setTimeout(() => setRefreshing(false), 1500);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>THÙNG RÁC</Text>
@@ -46,14 +71,19 @@ export default function TrashScreen() {
         data={filteredData}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <ExpenseItem
-            title={item.title}
-            amount={item.amount}
-            createdAt={item.createdAt}
-            type={item.type}
-          />
+          <Pressable onLongPress={() => handleRestore(item.id)}>
+            <ExpenseItem
+              title={item.title}
+              amount={item.amount}
+              createdAt={item.createdAt}
+              type={item.type}
+            />
+          </Pressable>
         )}
         ListEmptyComponent={<Text style={styles.empty}>Không có dữ liệu</Text>}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
       />
     </SafeAreaView>
   );

@@ -65,6 +65,11 @@ export function useDatabase() {
     await db.runAsync("UPDATE expenses SET isDeleted = 1 WHERE id = ?", [id]);
   };
 
+  const restoreExpense = async (id: number) => {
+    await db.runAsync("UPDATE expenses SET isDeleted = 0 WHERE id = ?", [id]);
+  };
+  
+
   return {
     addExpense,
     getExpenses,
@@ -72,5 +77,6 @@ export function useDatabase() {
     getExpenseById,
     updateExpense,
     deleteExpense,
+    restoreExpense,
   };
 }
