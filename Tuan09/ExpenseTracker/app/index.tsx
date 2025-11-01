@@ -1,19 +1,20 @@
 import React, { useCallback, useState } from "react";
 import {
-  View,
   Text,
   StyleSheet,
   SafeAreaView,
   FlatList,
   Button,
   Pressable,
+  Alert,
+  View,
 } from "react-native";
 import ExpenseItem from "../components/ExpenseItem";
 import { useDatabase } from "../hooks/useDatabase";
 import { useRouter, useFocusEffect } from "expo-router";
 
 export default function HomeScreen() {
-  const { getExpenses } = useDatabase();
+  const { getExpenses, deleteExpense } = useDatabase();
   const [data, setData] = useState<any[]>([]);
   const router = useRouter();
 
@@ -22,18 +23,35 @@ export default function HomeScreen() {
     setData(items);
   };
 
-  // ✅ Tự reload khi màn hình được focus
   useFocusEffect(
     useCallback(() => {
       loadData();
     }, [])
   );
 
+  const handleDelete = (id: number) => {
+    Alert.alert("Xác nhận", "Bạn có chắc muốn xóa khoản này?", [
+      { text: "Hủy", style: "cancel" },
+      {
+        text: "Xóa",
+        style: "destructive",
+        onPress: async () => {
+          await deleteExpense(id);
+          loadData();
+        },
+      },
+    ]);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>EXPENSE TRACKER</Text>
 
-      <Button title="Add" onPress={() => router.push("/modal")} />
+      <View style={{ marginBottom: 10 }}>
+        <Button title="Add" onPress={() => router.push("/modal")} />
+      </View>
+
+      <Button title="Thùng rác" onPress={() => router.push("/trash")} />
 
       <FlatList
         data={data}
@@ -41,11 +59,9 @@ export default function HomeScreen() {
         renderItem={({ item }) => (
           <Pressable
             onPress={() =>
-              router.push({
-                pathname: "/edit",
-                params: { id: item.id.toString() },
-              })
+              router.push({ pathname: "/edit", params: { id: item.id } })
             }
+            onLongPress={() => handleDelete(item.id)} // 👈 Xóa khi nhấn giữ
           >
             <ExpenseItem
               title={item.title}
