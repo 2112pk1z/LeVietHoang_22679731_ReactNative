@@ -9,6 +9,7 @@ import {
   Alert,
   View,
   TextInput,
+  RefreshControl,
 } from "react-native";
 import ExpenseItem from "../components/ExpenseItem";
 import { useDatabase } from "../hooks/useDatabase";
@@ -18,9 +19,9 @@ export default function HomeScreen() {
   const { getExpenses, deleteExpense } = useDatabase();
   const [data, setData] = useState<any[]>([]);
   const [search, setSearch] = useState("");
+  const [refreshing, setRefreshing] = useState(false);
   const router = useRouter();
 
-  // ✅ Hàm tải dữ liệu
   const loadData = async () => {
     const items = await getExpenses();
     setData(items);
@@ -32,12 +33,10 @@ export default function HomeScreen() {
     }, [])
   );
 
-  // ✅ Lọc dữ liệu theo ô tìm kiếm
   const filteredData = data.filter((item) =>
     item.title.toLowerCase().includes(search.toLowerCase())
   );
 
-  // ✅ Xử lý xóa (đưa vào thùng rác)
   const handleDelete = (id: number) => {
     Alert.alert("Xác nhận", "Bạn có chắc muốn xóa khoản này?", [
       { text: "Hủy", style: "cancel" },
@@ -52,19 +51,24 @@ export default function HomeScreen() {
     ]);
   };
 
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await loadData();
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 800);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>EXPENSE TRACKER</Text>
 
-      {/* Nút thêm mới */}
       <View style={{ marginBottom: 10 }}>
         <Button title="Add" onPress={() => router.push("/modal")} />
       </View>
 
-      {/* Nút đi tới thùng rác */}
       <Button title="Thùng rác" onPress={() => router.push("/trash")} />
 
-      {/* Ô tìm kiếm */}
       <View style={{ marginTop: 10 }}>
         <TextInput
           placeholder="Tìm kiếm khoản thu/chi..."
@@ -74,9 +78,8 @@ export default function HomeScreen() {
         />
       </View>
 
-      {/* Danh sách thu chi */}
       <FlatList
-        data={filteredData} // ✅ Sửa lại chỗ này
+        data={filteredData}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <Pressable
@@ -94,6 +97,9 @@ export default function HomeScreen() {
           </Pressable>
         )}
         ListEmptyComponent={<Text style={styles.empty}>Chưa có dữ liệu</Text>}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
       />
     </SafeAreaView>
   );
