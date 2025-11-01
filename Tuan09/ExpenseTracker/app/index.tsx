@@ -112,6 +112,9 @@ export default function HomeScreen() {
       </View>
 
       <Button title="Thùng rác" onPress={() => router.push("/trash")} />
+      <View style={{ marginTop: 10 }}>
+        <Button title="Thống kê" onPress={() => router.push("/statistics")} />
+      </View>
 
       <TextInput
         placeholder="Nhập link MockAPI.io để đồng bộ..."
